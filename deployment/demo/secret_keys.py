@@ -1,6 +1,6 @@
 import os
-CLIENT_ID = 'c5b971bc0af14c8da483bdd007900729'
-CLIENT_SECRET = '245958f9205944238354b6bacd19ec15'
+CLIENT_ID = 'XXX'
+CLIENT_SECRET = 'XXX'
 
 # Set environment variables
 os.environ['SPOTIPY_CLIENT_ID'] = CLIENT_ID
