@@ -1,0 +1,7 @@
+import os
+CLIENT_ID = 'c5b971bc0af14c8da483bdd007900729'
+CLIENT_SECRET = '245958f9205944238354b6bacd19ec15'
+
+# Set environment variables
+os.environ['SPOTIPY_CLIENT_ID'] = CLIENT_ID
+os.environ['SPOTIPY_CLIENT_SECRET'] = CLIENT_SECRET
