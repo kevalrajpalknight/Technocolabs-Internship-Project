@@ -1,0 +1,76 @@
+{% extends 'base.html' %}   
+
+{% block content %}
+      <div class="p-5 text-center text-light bg-dark">
+        <!-- INTRODUCTION TO PROJECT -->
+        <h1 class="mb-3">Technocolabs</h1>
+        <h4 class="mb-3">Spotify Skip Prediction Project</h4>
+        <p>This project is about based on information about user music preference and other meta-data about tracks
+            whether it would be skipped or not.</p>
+        </p>
+        <hr>
+        <h3 class="mb-5 justify-content-start text-start">Inputs for Model:</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <form class="form-inline"  action="{% url 'home' %}" method="GET" value="{{ request.GET.query }}">
+                    <div class="md-form">
+                        <label for="query" style="position: relative; margin-bottom: 1em;">Search Track for Prediction</label>
+                        <input class="form-control mr-sm-1" type="text" placeholder="Search" aria-label="Search" name="query" value="{{ request.GET.query }}">
+                        <button class="form-inline-button btn btn-primary" type="submit" name="submit"  value="Search"><i class="fa fa-search text-white"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card  text-dark bg-light mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Input Track: {{track_name}}</h5>
+                        <p class="card-text">by: {{track_artist}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container">
+                <div class="md-form mb-5">
+                    <label class="form-label text-light" for="session_length">Session Length (10-20)</label>
+                    <div class="range">
+                        <input type="range" name="session_length" class="form-range" min="10" max="20" id="session_length" />
+                    </div>
+                </div>
+                <div class="md-form mb-5">
+                <label for="context_type" style="position: relative; margin-bottom: 1em;">Context Type</label>
+                {% comment %} <input type="text" id="orangeForm-name" class="form-control validate"> {% endcomment %}
+                {{ form.context_type }}
+                </div>
+                <div class="md-form mb-5">
+                <label for="hist_user_behavior_reason_start" style="position: relative; margin-bottom: 1em;">Hist User Behavior Reason Start Type</label>
+                {{ form.hist_user_behavior_reason_start }}
+                </div>
+                <div class="md-form mb-5">
+                <label for="hist_user_behavior_reason_end" style="position: relative; margin-bottom: 1em;">Hist User Behavior Reason End Type</label>
+                {{ form.hist_user_behavior_reason_end }}
+                </div>
+                <div class="md-form mb-5">
+                <label for="mode" style="position: relative; margin-bottom: 1em;">Mode Type</label>
+                {{ form.mode }}
+                </div>
+                <div class="md-form mb-5">
+                <label for="premium" style="position: relative; margin-bottom: 1em;">Premium Type</label>
+                {{ form.premium }}
+                </div>
+
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </form>
+      </div>
+
+      
+{% endblock content %}
